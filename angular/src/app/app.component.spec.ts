@@ -2,7 +2,7 @@ import { TestBed, async } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
 import { LayoutStoreService } from "../shared/layout/layout-store.service";
 import { AppSessionService } from "../shared/session/app-session.service";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -29,6 +29,7 @@ import { SidebarComponent } from "./layout/sidebar.component";
 import { SidebarLogoComponent } from "./layout/sidebar-logo.component";
 import { SidebarUserPanelComponent } from "./layout/sidebar-user-panel.component";
 import { SidebarMenuComponent } from "./layout/sidebar-menu.component";
+import { ItemsComponent } from "./items/items.component";
 
 describe("AppComponent", () => {
   beforeEach(() => {
@@ -36,6 +37,7 @@ describe("AppComponent", () => {
       declarations: [
         AppComponent,
         HomeComponent,
+        ItemsComponent,
         AboutComponent,
 
         // layout
@@ -78,9 +80,9 @@ describe("AppComponent", () => {
                 },
               },
             },
-            getShownLoginName: function(){
-              return 'admin';
-            }
+            getShownLoginName: function () {
+              return "admin";
+            },
           },
         },
       ],
@@ -93,5 +95,4 @@ describe("AppComponent", () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  
 });
