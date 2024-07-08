@@ -41,6 +41,10 @@ import { SidebarMenuComponent } from "./layout/sidebar-menu.component";
 // items
 import { CreateItemDialogComponent } from "./items/create-item-dialog/create-item-dialog.component";
 import { ItemsComponent } from "./items/items.component";
+// invoices
+import { InvoicesComponent } from "./invoices/invoices.component";
+import { CreateInvoiceDialogComponent } from "./invoices/create-invoice-dialog/create-invoice-dialog.component";
+import { InvoiceServiceProxy } from "@shared/service-proxies/service-proxies";
 
 @NgModule({
   declarations: [
@@ -74,6 +78,9 @@ import { ItemsComponent } from "./items/items.component";
     // items
     ItemsComponent,
     CreateItemDialogComponent,
+    // invoices
+    InvoicesComponent,
+    CreateInvoiceDialogComponent,
   ],
   imports: [
     NgxPaginationModule,
@@ -90,8 +97,7 @@ import { ItemsComponent } from "./items/items.component";
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
-    // items
   ],
-  providers: [],
+  providers: [InvoiceServiceProxy],
 })
 export class AppModule {}

@@ -5,56 +5,56 @@ import {
   PagedRequestDto,
 } from "@shared/paged-listing-component-base";
 import {
-  ItemDto,
-  ItemDtoPagedResultDto,
-  ItemsServiceProxy,
+  InvoiceDto,
+  InvoiceDtoPagedResultDto,
+  InvoiceServiceProxy,
 } from "@shared/service-proxies/service-proxies";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
-import { finalize } from "rxjs/operators";
-import { CreateItemDialogComponent } from "./create-item-dialog/create-item-dialog.component";
+import { finalize } from "rxjs";
+import { CreateInvoiceDialogComponent } from "./create-invoice-dialog/create-invoice-dialog.component";
 
-class PagedItemRequestDto extends PagedRequestDto {
+class PagedInvoiceRequestDto extends PagedRequestDto {
   keyword: string;
 }
 
 @Component({
-  selector: "app-items",
-  templateUrl: "./items.component.html",
+  selector: "app-invoices",
+  templateUrl: "./invoices.component.html",
   animations: [appModuleAnimation()],
 })
-export class ItemsComponent extends PagedListingComponentBase<ItemDto> {
-  items: ItemDto[] = [];
+export class InvoicesComponent extends PagedListingComponentBase<InvoiceDto> {
+  invoices: InvoiceDto[] = [];
   keyword = "";
 
   constructor(
     injector: Injector,
-    private _rolesService: ItemsServiceProxy,
+    private _invoicesService: InvoiceServiceProxy,
     private _modalService: BsModalService
   ) {
     super(injector);
   }
 
   list(
-    request: PagedItemRequestDto,
+    request: PagedInvoiceRequestDto,
     pageNumber: number,
     finishedCallback: Function
   ): void {
     request.keyword = this.keyword;
 
-    this._rolesService
+    this._invoicesService
       .getAll(request.keyword, request.skipCount, request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: ItemDtoPagedResultDto) => {
-        this.items = result.items;
+      .subscribe((result: InvoiceDtoPagedResultDto) => {
+        this.invoices = result.items;
         this.showPaging(result, pageNumber);
       });
   }
 
-  createItem(): void {
+  createInvoice(): void {
     this.showCreateOrEditRoleDialog();
   }
 
@@ -62,7 +62,7 @@ export class ItemsComponent extends PagedListingComponentBase<ItemDto> {
     let createOrEditRoleDialog: BsModalRef;
     if (!id) {
       createOrEditRoleDialog = this._modalService.show(
-        CreateItemDialogComponent,
+        CreateInvoiceDialogComponent,
         {
           class: "modal-lg",
         }
@@ -84,5 +84,5 @@ export class ItemsComponent extends PagedListingComponentBase<ItemDto> {
     });
   }
 
-  protected delete(entity: ItemDto): void {}
+  protected delete(entity: InvoiceDto): void {}
 }

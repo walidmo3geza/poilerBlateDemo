@@ -9,6 +9,7 @@ import { TenantsComponent } from "./tenants/tenants.component";
 import { RolesComponent } from "app/roles/roles.component";
 import { ChangePasswordComponent } from "./users/change-password/change-password.component";
 import { ItemsComponent } from "./items/items.component";
+import { InvoicesComponent } from "./invoices/invoices.component";
 
 @NgModule({
   imports: [
@@ -20,6 +21,11 @@ import { ItemsComponent } from "./items/items.component";
           {
             path: "items",
             component: ItemsComponent,
+            canActivate: [AppRouteGuard],
+          },
+          {
+            path: "invoices",
+            component: InvoicesComponent,
             canActivate: [AppRouteGuard],
           },
           {
