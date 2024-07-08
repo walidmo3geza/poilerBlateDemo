@@ -5,6 +5,7 @@ using Demo.Products;
 namespace Demo.Items.Dto
 {
     [AutoMapFrom(typeof(Item))]
+    [AutoMapTo(typeof(Item))]
     public class ItemDto : EntityDto<int>
     {
         public string Name { get; set; }

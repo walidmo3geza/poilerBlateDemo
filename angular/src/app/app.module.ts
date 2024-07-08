@@ -38,6 +38,8 @@ import { SidebarComponent } from "./layout/sidebar.component";
 import { SidebarLogoComponent } from "./layout/sidebar-logo.component";
 import { SidebarUserPanelComponent } from "./layout/sidebar-user-panel.component";
 import { SidebarMenuComponent } from "./layout/sidebar-menu.component";
+// items
+import { CreateItemDialogComponent } from "./items/create-item-dialog/create-item-dialog.component";
 import { ItemsComponent } from "./items/items.component";
 
 @NgModule({
@@ -69,8 +71,12 @@ import { ItemsComponent } from "./items/items.component";
     SidebarLogoComponent,
     SidebarUserPanelComponent,
     SidebarMenuComponent,
+    // items
+    ItemsComponent,
+    CreateItemDialogComponent,
   ],
   imports: [
+    NgxPaginationModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -85,7 +91,6 @@ import { ItemsComponent } from "./items/items.component";
     SharedModule,
     NgxPaginationModule,
     // items
-    ItemsComponent,
   ],
   providers: [],
 })
